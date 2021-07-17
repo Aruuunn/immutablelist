@@ -132,9 +132,76 @@ func TestImmutableList(t *testing.T) {
 
 		assertEqualValue(l.DeleteAt(2).First(), 1)
 		assertEqualValue(l.DeleteAt(2).Last(), 4)
-		
+
 		assertEqualValue(l.DeleteAt(3).First(), 1)
 		assertEqualValue(l.DeleteAt(3).Last(), 3)
+	})
+
+
+	t.Run("method AsSlice", func(t *testing.T){
+		l := &immutable_list.ImmutableList{}
+		l = l.Add(1)
+		l = l.Add(2)
+		l = l.Add(3)
+		l = l.Add(4)
+		l = l.Add(5)
+		l = l.Add(6)
+		l = l.Add(7)
+		l = l.Add(8)
+
+		s := l.AsSlice()
+		assertEqualValue(s[0], 1)
+		assertEqualValue(s[1], 2)
+		assertEqualValue(s[2], 3)
+		assertEqualValue(s[3], 4)
+		assertEqualValue(s[4], 5)
+		assertEqualValue(s[5], 6)
+		assertEqualValue(s[6], 7)
+		assertEqualValue(s[7], 8)
+
+		//using Prepend
+		l = &immutable_list.ImmutableList{}
+		l = l.Prepend(1)
+		l = l.Prepend(2)
+		l = l.Prepend(3)
+		l = l.Prepend(4)
+		l = l.Prepend(5)
+		l = l.Prepend(6)
+		l = l.Prepend(7)
+		l = l.Prepend(8)
+		
+		s = l.AsSlice()
+		assertEqualValue(s[0], 8)
+		assertEqualValue(s[1], 7)
+		assertEqualValue(s[2], 6)
+		assertEqualValue(s[3], 5)
+		assertEqualValue(s[4], 4)
+		assertEqualValue(s[5], 3)
+		assertEqualValue(s[6], 2)
+		assertEqualValue(s[7], 1)
+
+		// using Delete
+		l = &immutable_list.ImmutableList{}
+		l = l.Prepend(1)
+		l = l.Prepend(2)
+		l = l.Prepend(3)
+		l = l.Prepend(4)
+		l = l.Prepend(5)
+		l = l.Prepend(6)
+		l = l.Prepend(7)
+		l = l.Prepend(8)
+
+		l = l.DeleteAt(0)
+		l = l.DeleteAt(2)
+		l = l.DeleteAt(1)
+		l = l.DeleteAt(0)
+		l = l.DeleteAt(3)
+
+		s = l.AsSlice()
+
+		assertEqualValue(s[0], 4)
+		assertEqualValue(s[1], 3)
+		assertEqualValue(s[2], 2)
 	})
 
 }
