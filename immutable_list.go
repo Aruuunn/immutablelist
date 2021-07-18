@@ -143,12 +143,14 @@ func (l *ImmutableList) DeleteAt(index int) *ImmutableList {
 
 	newList := &ImmutableList{}
 	
-	for i := 0; i <= index ; i ++ {
-		if i != index {
-		    newList = newList.Add(curr.value)
-		}
+	for i := 0; i < index ; i ++ {
+		newList = newList.Add(curr.value)
 		curr = curr.next
 	} 
+
+	if curr != nil {
+		curr = curr.next
+	}
 
 	if !newList.IsEmpty() {
 	    newList.last.next = curr
