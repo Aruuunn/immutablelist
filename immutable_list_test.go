@@ -1,13 +1,13 @@
-package immutable_list_test
+package immutablelist_test
 
 import (
-	"github.com/arunmurugan78/immutable_list"
+	"github.com/arunmurugan78/immutablelist"
 	"testing"
 )
 
 func TestImmutableList(t *testing.T) {
 
-	assertNotEqualReference := func(l1, l2 *immutable_list.ImmutableList) {
+	assertNotEqualReference := func(l1, l2 *immutablelist.ImmutableList) {
 		if l1 == l2 {
 			t.Errorf("Got same reference %v = %v", l1, l2)
 		}
@@ -20,7 +20,7 @@ func TestImmutableList(t *testing.T) {
 	}
 
 	t.Run("Prepending to List", func(t *testing.T) {
-		l := &immutable_list.ImmutableList{}
+		l := &immutablelist.ImmutableList{}
 
 		assertNotEqualReference(l, l.Prepend(1))
 		l = l.Prepend(1)
@@ -62,7 +62,7 @@ func TestImmutableList(t *testing.T) {
 	})
 
 	t.Run("Appending to List", func(t *testing.T) {
-		l := &immutable_list.ImmutableList{}
+		l := &immutablelist.ImmutableList{}
 		assertNotEqualReference(l, l.Add(1))
 		l = l.Add(1)
 		assertNotEqualReference(l, l.Add(6))
@@ -104,7 +104,7 @@ func TestImmutableList(t *testing.T) {
 	})
 
 	t.Run("Delete at a index", func(t *testing.T) {
-		l := &immutable_list.ImmutableList{}
+		l := &immutablelist.ImmutableList{}
 		l = l.Add(1)
 		l = l.Add(2)
 		l = l.Add(3)
@@ -139,7 +139,7 @@ func TestImmutableList(t *testing.T) {
 
 
 	t.Run("method AsSlice", func(t *testing.T){
-		l := &immutable_list.ImmutableList{}
+		l := &immutablelist.ImmutableList{}
 		l = l.Add(1)
 		l = l.Add(2)
 		l = l.Add(3)
@@ -160,7 +160,7 @@ func TestImmutableList(t *testing.T) {
 		assertEqualValue(s[7], 8)
 
 		//using Prepend
-		l = &immutable_list.ImmutableList{}
+		l = &immutablelist.ImmutableList{}
 		l = l.Prepend(1)
 		l = l.Prepend(2)
 		l = l.Prepend(3)
@@ -181,7 +181,7 @@ func TestImmutableList(t *testing.T) {
 		assertEqualValue(s[7], 1)
 
 		// using Delete
-		l = &immutable_list.ImmutableList{}
+		l = &immutablelist.ImmutableList{}
 		l = l.Prepend(1)
 		l = l.Prepend(2)
 		l = l.Prepend(3)
@@ -207,7 +207,7 @@ func TestImmutableList(t *testing.T) {
 
 	t.Run("insertAt method", func(t *testing.T){
 		
-		l := &immutable_list.ImmutableList{}
+		l := &immutablelist.ImmutableList{}
 
 		l = l.InsertAt(0, 0)
 		l = l.InsertAt(1, 1)
@@ -235,7 +235,7 @@ func TestImmutableList(t *testing.T) {
 		assertEqualValue(s[7], 7)
 		assertEqualValue(s[8], 8)
 
-		l = &immutable_list.ImmutableList{}
+		l = &immutablelist.ImmutableList{}
 
 		l = l.InsertAt(0, 9)
 		l = l.InsertAt(1, 10)
@@ -264,7 +264,7 @@ func TestImmutableList(t *testing.T) {
 		assertEqualValue(s[8], 17)
 
 		// using Add
-		l = &immutable_list.ImmutableList{}
+		l = &immutablelist.ImmutableList{}
 		l = l.Add(9)
 		l = l.Add(10)
 		l = l.Add(11)

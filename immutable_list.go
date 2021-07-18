@@ -1,4 +1,4 @@
-package immutable_list
+package immutablelist
 
 import (
 	"fmt"
