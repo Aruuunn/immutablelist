@@ -10,7 +10,7 @@ type node struct {
 }
 
 func (n *node) Copy() *node {
-	return &node {
+	return &node{
 		value: n.value,
 	}
 }
@@ -19,6 +19,10 @@ type ImmutableList struct {
 	first *node
 	last  *node
 	size  int
+}
+
+func New() *ImmutableList {
+	return &ImmutableList{}
 }
 
 func (l *ImmutableList) Size() int {
@@ -120,15 +124,14 @@ func (l *ImmutableList) Prepend(value interface{}) *ImmutableList {
 
 // Returns the immutable list as a slice
 func (l *ImmutableList) AsSlice() []interface{} {
-	var slice []interface{} = make([]interface{},0)
-	
+	var slice []interface{} = make([]interface{}, 0)
+
 	for value := range l.Iterator() {
 		slice = append(slice, value)
 	}
 
 	return slice
 }
-
 
 func (l *ImmutableList) DeleteAt(index int) *ImmutableList {
 	if index < 0 || index >= l.size {
@@ -142,28 +145,28 @@ func (l *ImmutableList) DeleteAt(index int) *ImmutableList {
 	var curr *node = l.first
 
 	newList := &ImmutableList{}
-	
-	for i := 0; i < index ; i ++ {
+
+	for i := 0; i < index; i++ {
 		newList = newList.Add(curr.value)
 		curr = curr.next
-	} 
+	}
 
 	if curr != nil {
 		curr = curr.next
 	}
 
 	if !newList.IsEmpty() {
-	    newList.last.next = curr
+		newList.last.next = curr
 	} else {
 		newList.first = curr
 	}
 
-	if curr!=nil {
-	   newList.last = l.last
+	if curr != nil {
+		newList.last = l.last
 	}
 
 	newList.size = l.size - 1
-	
+
 	return newList
 }
 
@@ -191,7 +194,7 @@ func (l *ImmutableList) InsertAt(index int, value interface{}) *ImmutableList {
 	if curr != nil {
 		newList.last.next = curr
 		newList.last = l.last
-	} 
+	}
 
 	newList.size = l.size + 1
 
@@ -205,7 +208,7 @@ func (l *ImmutableList) String() string {
 		if x == "" {
 			x = fmt.Sprintf("%v", value)
 		} else {
-			x  = x + fmt.Sprintf(", %v", value)
+			x = x + fmt.Sprintf(", %v", value)
 		}
 	}
 

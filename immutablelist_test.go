@@ -39,7 +39,6 @@ func TestImmutableList(t *testing.T) {
 		assertEqualValue(l.Last(), 1)
 		assertEqualValue(l.First(), 8)
 
-
 		assertEqualValue(l.Get(0), 8)
 		assertEqualValue(l.Get(1), 7)
 		assertEqualValue(l.Get(2), 6)
@@ -47,14 +46,12 @@ func TestImmutableList(t *testing.T) {
 		assertEqualValue(l.Get(4), 4)
 		assertEqualValue(l.Get(5), 3)
 
-
 		i := 8
 
 		for value := range l.Iterator() {
 			assertEqualValue(value, i)
 			i--
 		}
-
 
 		if l.Size() != 8 {
 			t.Errorf("Expected 8 elements in list, got %d", l.Size())
@@ -90,7 +87,6 @@ func TestImmutableList(t *testing.T) {
 		assertEqualValue(l.Last(), 8)
 		assertEqualValue(l.First(), 1)
 
-
 		i := 1
 
 		for value := range l.Iterator() {
@@ -112,12 +108,10 @@ func TestImmutableList(t *testing.T) {
 
 		assertEqualValue(l.Size(), 4)
 
-
 		assertNotEqualReference(l, l.DeleteAt(0))
 		assertNotEqualReference(l, l.DeleteAt(1))
 		assertNotEqualReference(l, l.DeleteAt(2))
 		assertNotEqualReference(l, l.DeleteAt(3))
-
 
 		assertEqualValue(l.Size()-1, l.DeleteAt(0).Size())
 		assertEqualValue(l.Size()-1, l.DeleteAt(1).Size())
@@ -129,7 +123,6 @@ func TestImmutableList(t *testing.T) {
 		assertEqualValue(l.DeleteAt(1).First(), 1)
 		assertEqualValue(l.DeleteAt(1).Last(), 4)
 
-
 		assertEqualValue(l.DeleteAt(2).First(), 1)
 		assertEqualValue(l.DeleteAt(2).Last(), 4)
 
@@ -137,8 +130,7 @@ func TestImmutableList(t *testing.T) {
 		assertEqualValue(l.DeleteAt(3).Last(), 3)
 	})
 
-
-	t.Run("method AsSlice", func(t *testing.T){
+	t.Run("method AsSlice", func(t *testing.T) {
 		l := &immutablelist.ImmutableList{}
 		l = l.Add(1)
 		l = l.Add(2)
@@ -169,7 +161,7 @@ func TestImmutableList(t *testing.T) {
 		l = l.Prepend(6)
 		l = l.Prepend(7)
 		l = l.Prepend(8)
-		
+
 		s = l.AsSlice()
 		assertEqualValue(s[0], 8)
 		assertEqualValue(s[1], 7)
@@ -204,9 +196,8 @@ func TestImmutableList(t *testing.T) {
 		assertEqualValue(s[2], 2)
 	})
 
+	t.Run("insertAt method", func(t *testing.T) {
 
-	t.Run("insertAt method", func(t *testing.T){
-		
 		l := &immutablelist.ImmutableList{}
 
 		l = l.InsertAt(0, 0)
@@ -250,7 +241,7 @@ func TestImmutableList(t *testing.T) {
 		assertEqualValue(l.Size(), 9)
 		assertEqualValue(l.First(), 9)
 		assertEqualValue(l.Last(), 17)
-       
+
 		// check using AsSlice
 		s = l.AsSlice()
 		assertEqualValue(s[0], 9)

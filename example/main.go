@@ -1,21 +1,3 @@
-# 🔗 Immutable List
-[![GoDoc](https://godoc.org/github.com/kkdai/maglev?status.svg)](https://godoc.org/github.com/arunmurugan78/immutablelist) 
-
-A small go package which implements Immutable List (Persistent Data Structure). 
-
-Any Operation on the Immutable List returns a new list reference and at the same time the data is stored efficiently. Hence resulting in immutablity.
-
-
-## Installation
-
-```bash
-go get github.com/arunmurugan78/immutablelist 
-```
-
-
-## Quick Start
-
-```go
 package main
 
 import (
@@ -44,5 +26,3 @@ func main() {
 
 	fmt.Println(list.InsertAt(2, "🍺")) // ImmutableList(🍷, 🍕, 🍺, 🍗, 🍔)
 }
-
-```
