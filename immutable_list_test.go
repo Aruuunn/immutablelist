@@ -1,7 +1,7 @@
 package immutable_list_test
 
 import (
-	"immutable_list"
+	"github.com/arunmurugan78/immutable_list"
 	"testing"
 )
 
