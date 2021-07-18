@@ -1,10 +1,10 @@
 # 🔗 Immutable List
 [![GoDoc](https://godoc.org/github.com/kkdai/maglev?status.svg)](https://godoc.org/github.com/arunmurugan78/immutablelist) 
+[![Go](https://github.com/ArunMurugan78/immutablelist/actions/workflows/go.yml/badge.svg)](https://github.com/ArunMurugan78/immutablelist/actions/workflows/go.yml)
 
 A small go package which implements Immutable List (Persistent Data Structure). 
 
-Any Operation on the Immutable List returns a new list reference and at the same time the data is stored efficiently. Hence resulting in immutablity.
-
+Read about Persistent Data Structures at [wikipedia](https://en.wikipedia.org/wiki/Persistent_data_structure).
 
 ## Installation
 
