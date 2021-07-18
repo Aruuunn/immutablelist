@@ -162,3 +162,34 @@ func (l *ImmutableList) DeleteAt(index int) *ImmutableList {
 	
 	return newList
 }
+
+// function to insert at a given index
+func (l *ImmutableList) InsertAt(index int, value interface{}) *ImmutableList {
+	if index < 0 || index > l.size {
+		panic("Index out of range")
+	}
+
+	if l.IsEmpty() {
+		return l.Add(value)
+	}
+
+	var curr *node = l.first
+
+	newList := &ImmutableList{}
+
+	for i := 0; i < index; i++ {
+		newList = newList.Add(curr.value)
+		curr = curr.next
+	}
+
+	newList = newList.Add(value)
+
+	if curr != nil {
+		newList.last.next = curr
+		newList.last = l.last
+	} 
+
+	newList.size = l.size + 1
+
+	return newList
+}

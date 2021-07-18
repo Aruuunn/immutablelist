@@ -204,4 +204,100 @@ func TestImmutableList(t *testing.T) {
 		assertEqualValue(s[2], 2)
 	})
 
+
+	t.Run("insertAt method", func(t *testing.T){
+		
+		l := &immutable_list.ImmutableList{}
+
+		l = l.InsertAt(0, 0)
+		l = l.InsertAt(1, 1)
+		l = l.InsertAt(2, 2)
+		l = l.InsertAt(3, 3)
+		l = l.InsertAt(4, 4)
+		l = l.InsertAt(5, 5)
+		l = l.InsertAt(6, 6)
+		l = l.InsertAt(7, 7)
+		l = l.InsertAt(8, 8)
+
+		assertEqualValue(l.Size(), 9)
+		assertEqualValue(l.First(), 0)
+		assertEqualValue(l.Last(), 8)
+
+		// check using AsSlice
+		s := l.AsSlice()
+		assertEqualValue(s[0], 0)
+		assertEqualValue(s[1], 1)
+		assertEqualValue(s[2], 2)
+		assertEqualValue(s[3], 3)
+		assertEqualValue(s[4], 4)
+		assertEqualValue(s[5], 5)
+		assertEqualValue(s[6], 6)
+		assertEqualValue(s[7], 7)
+		assertEqualValue(s[8], 8)
+
+		l = &immutable_list.ImmutableList{}
+
+		l = l.InsertAt(0, 9)
+		l = l.InsertAt(1, 10)
+		l = l.InsertAt(2, 11)
+		l = l.InsertAt(3, 12)
+		l = l.InsertAt(4, 13)
+		l = l.InsertAt(5, 14)
+		l = l.InsertAt(6, 15)
+		l = l.InsertAt(7, 16)
+		l = l.InsertAt(8, 17)
+
+		assertEqualValue(l.Size(), 9)
+		assertEqualValue(l.First(), 9)
+		assertEqualValue(l.Last(), 17)
+       
+		// check using AsSlice
+		s = l.AsSlice()
+		assertEqualValue(s[0], 9)
+		assertEqualValue(s[1], 10)
+		assertEqualValue(s[2], 11)
+		assertEqualValue(s[3], 12)
+		assertEqualValue(s[4], 13)
+		assertEqualValue(s[5], 14)
+		assertEqualValue(s[6], 15)
+		assertEqualValue(s[7], 16)
+		assertEqualValue(s[8], 17)
+
+		// using Add
+		l = &immutable_list.ImmutableList{}
+		l = l.Add(9)
+		l = l.Add(10)
+		l = l.Add(11)
+		l = l.Add(12)
+		l = l.Add(13)
+		l = l.Add(14)
+		l = l.Add(15)
+		l = l.Add(16)
+		l = l.Add(17)
+
+		// now use InsertAt
+		l = l.InsertAt(0, 0)
+		l = l.InsertAt(1, 1)
+		l = l.InsertAt(2, 2)
+
+		assertEqualValue(l.Size(), 12)
+		assertEqualValue(l.First(), 0)
+		assertEqualValue(l.Last(), 17)
+
+		// check using AsSlice
+		s = l.AsSlice()
+		assertEqualValue(s[0], 0)
+		assertEqualValue(s[1], 1)
+		assertEqualValue(s[2], 2)
+		assertEqualValue(s[3], 9)
+		assertEqualValue(s[4], 10)
+		assertEqualValue(s[5], 11)
+		assertEqualValue(s[6], 12)
+		assertEqualValue(s[7], 13)
+		assertEqualValue(s[8], 14)
+		assertEqualValue(s[9], 15)
+		assertEqualValue(s[10], 16)
+		assertEqualValue(s[11], 17)
+	})
+
 }
