@@ -1,6 +1,8 @@
 package immutable_list
 
-
+import (
+	"fmt"
+)
 
 type node struct {
 	value interface{}
@@ -192,4 +194,18 @@ func (l *ImmutableList) InsertAt(index int, value interface{}) *ImmutableList {
 	newList.size = l.size + 1
 
 	return newList
+}
+
+func (l *ImmutableList) String() string {
+	x := ""
+
+	for value := range l.Iterator() {
+		if x == "" {
+			x = fmt.Sprintf("%v", value)
+		} else {
+			x  = x + fmt.Sprintf(", %v", value)
+		}
+	}
+
+	return "ImmutableList(" + x + ")"
 }
